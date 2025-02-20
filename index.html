@@ -1962,6 +1962,66 @@ function work() {
       </pre>
     </section>
   </section>
+
+
+  <section>
+    <h2>Captured Surface Resolution</h2>
+    <div>
+      <p> This property allows applications to know the physical and logical resolution of the captured
+        surface even if there is a resolution constraint set on the track. This would help, for instance,
+        for applications that want to adapt their send resolution based on the captured surface's logical
+        resolution or in another use case, applications would allow receivers to receive a two spatial
+        quality layer(physical + logical resolution) and allow them to choose the best one based on
+        bandwidth and desired render size.
+      </p>
+    </div>
+    <div>
+      <p>
+        The WebIDL changes are the following:
+        <pre class="idl">
+        partial dictionary MediaTrackSettings {
+          unsigned long capturedSurfacePhysicalWidth;
+          unsigned long capturedSurfacePhysicalHeight;
+          unsigned long capturedSurfaceLogicalWidth;
+          unsigned long capturedSurfaceLogicalHeight;
+        };
+        </pre>
+
+      <section class="notoc">
+        <h5>Members</h5>
+        <dl class="dictionary-members" data-link-for="MediaTrackSettings" data-dfn-for="MediaTrackSettings">
+          <dt><dfn><code>capturedSurfacePhysicalWidth</code></dfn> of type <span class="idlMemberType">unsigned long</span></dt>
+          <dd>
+            <p> Represents the captured surface's width in physical/screen pixels. 
+            </p>
+          </dd>
+          <dt><dfn><code>capturedSurfacePhysicalHeight</code></dfn> of type <span class="idlMemberType">unsigned long</span></dt>
+          <dd>
+            <p> Represents the captured surface's height in physical/screen pixels. 
+            </p>
+          </dd>
+          <dt><dfn><code>capturedSurfaceLogicalWidth</code></dfn> of type <span class="idlMemberType">unsigned long</span></dt>
+          <dd>
+            <p> Represents the captured surface's width in logical pixels. 
+              For tab captures, this represents the tab's CSS pixel size (i.e., incorporates both OS scaling and browser zoom). 
+              For window and desktop captures, this represents the resolution-independent logical width as provided by the respective OS (i.e. incorporates only the OS high-dpi scaling but not the browser zoom).
+            </p>
+          </dd>
+          <dt><dfn><code>capturedSurfaceLogicalHeight</code></dfn> of type <span class="idlMemberType">unsigned long</span></dt>
+          <dd>
+            <p> Represents the captured surface's height in logical pixels. 
+              For tab captures, this represents the tab's CSS pixel size (i.e., incorporates both OS scaling and browser zoom). 
+              For window and desktop captures, this represents the resolution-independent logical height as provided by the respective OS (i.e. incorporates only the OS high-dpi scaling but not the browser zoom).
+            </p>
+          </dd>
+        </dl>
+      </section>
+      </p>
+    </div>
+  </section>
+
+
+
   <section>
     <h2>MediaStream in workers</h2>
     <div>
